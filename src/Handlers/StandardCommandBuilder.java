@@ -28,6 +28,7 @@ public class StandardCommandBuilder implements CommandBuilder {
 
         command.getData(commandArgs);
         while (!command.checkCompleteness()) {
+
             outputer.outputLine("Некоторые обязательные поля остались незаполненными:"
                     + String.join(" ", command.getEmptyFields()));
             String newDataLine = this.inputer.getLine();

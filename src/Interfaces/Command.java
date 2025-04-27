@@ -1,5 +1,6 @@
 package Interfaces;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import Controllers.*;
 import Handlers.*;
@@ -10,7 +11,7 @@ public interface Command {
     public void execute();
     public void getData(HashMap<String, String> data);
     public boolean checkCompleteness();
-    public String[] getEmptyFields();
+    public ArrayList<String> getEmptyFields();
     public String getInfo();
     public void setInputer(Inputer inp);
     public void setParser(Parser prs);

@@ -4,6 +4,8 @@ import Controllers.*;
 import Handlers.*;
 import Interfaces.*;
 import Commands.*;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Help implements Command {
@@ -22,8 +24,8 @@ public class Help implements Command {
         return true;
     }
 
-    public String[] getEmptyFields() {
-        return new String[0];
+    public ArrayList<String> getEmptyFields() {
+        return new ArrayList<String>();
     }
 
     public String getInfo() {

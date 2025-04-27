@@ -6,6 +6,7 @@ import Interfaces.Inputer;
 import Interfaces.Outputer;
 import Interfaces.Parser;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Exit implements Command {
@@ -22,8 +23,8 @@ public class Exit implements Command {
         return true;
     }
 
-    public String[] getEmptyFields() {
-        return new String[0];
+    public ArrayList<String> getEmptyFields() {
+        return new ArrayList<String>();
     }
 
     public String getInfo() {

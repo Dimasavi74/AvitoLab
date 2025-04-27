@@ -6,6 +6,7 @@ import Interfaces.Inputer;
 import Interfaces.Outputer;
 import Interfaces.Parser;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Arrays;
 
@@ -34,8 +35,14 @@ public class GetInfo implements Command {
         return true;
     }
 
-    public String[] getEmptyFields() {
-        return new String[0];
+    public ArrayList<String> getEmptyFields() {
+        ArrayList<String> emptyFields = new ArrayList<>();
+        for (String el: necessaryKeys) {
+            if (data.get(el) == null) {
+                emptyFields.add(el);
+            }
+        }
+        return emptyFields;
     }
 
     public String getInfo() {

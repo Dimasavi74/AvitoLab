@@ -7,6 +7,8 @@ import Handlers.*;
 import Interfaces.*;
 import Commands.*;
 
+import javax.xml.crypto.dsig.keyinfo.KeyName;
+
 public class StandardParser implements Parser {
     public HashMap<String, String> parseLine(String line) {
         HashMap<String, String> map = new HashMap<>();
@@ -33,7 +35,7 @@ public class StandardParser implements Parser {
         for (int i = 0; i < line.length(); i++) {
             char c = line.charAt(i);
             if (c == '{') {
-                String keyName = line.substring(1, i);
+                String keyName = line.substring(0, i).strip();
                 String value = "";
                 i++;
                 c = line.charAt(i);
@@ -43,6 +45,8 @@ public class StandardParser implements Parser {
                     c = line.charAt(i);
                 }
                 map.put(keyName, value);
+                line = line.substring(i + 1);
+                i = 0;
             }
         }
         return map;

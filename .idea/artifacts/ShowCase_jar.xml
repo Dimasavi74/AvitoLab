@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ShowCase:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ShowCase_jar</output-path>
+    <root id="archive" name="ShowCase.jar">
+      <element id="module-output" name="ShowCase" />
+    </root>
+  </artifact>
+</component>

@@ -1,9 +1,4 @@
-package Handlers;
-
-import Controllers.*;
-import Handlers.*;
-import Interfaces.*;
-import Commands.*;
+package Interfaces.cli.io;
 
 public class ConsoleOutputer implements Outputer {
     public void outputLine(String line) {

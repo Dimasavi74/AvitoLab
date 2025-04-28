@@ -1,13 +1,8 @@
-package Handlers;
+package Interfaces.cli.io;
 
 import java.util.HashMap;
-import Controllers.*;
-import Exceptions.DefaultException;
-import Handlers.*;
-import Interfaces.*;
-import Commands.*;
 
-import javax.xml.crypto.dsig.keyinfo.KeyName;
+import Interfaces.cli.Exceptions.DefaultException;
 
 public class StandardParser implements Parser {
     public HashMap<String, String> parseLine(String line) {

@@ -1,10 +1,12 @@
-package Controllers;
+package Interfaces;
 
-import Controllers.*;
-import Exceptions.*;
-import Handlers.*;
-import Interfaces.*;
-import Commands.*;
+import Commands.Command;
+import Interfaces.cli.CommandBuilder;
+import Interfaces.cli.Exceptions.WrongInput;
+import Interfaces.cli.StandardCommandBuilder;
+import Interfaces.cli.io.Inputer;
+import Interfaces.cli.io.Outputer;
+import Interfaces.cli.io.Parser;
 
 import java.util.HashMap;
 
@@ -21,14 +23,12 @@ public class MainCycleController {
     }
 
     public void mainCycle() {
+        run = true;
         while (run) {
             String newCommandLine = this.inputer.getLine();
             HashMap<String, String> parsedCommand = this.parser.parseLine(newCommandLine);
 
-            CommandBuilder builder = new StandardCommandBuilder();
-            builder.setInputer(this.inputer);
-            builder.setParser(this.parser);
-            builder.setOutputer(this.outputer);
+            CommandBuilder builder = new StandardCommandBuilder(outputer, inputer, parser);
 
             try {
                 Command command = builder.build(parsedCommand.get("command"), parsedCommand);

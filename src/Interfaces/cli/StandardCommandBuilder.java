@@ -1,39 +1,39 @@
-package Handlers;
+package Interfaces.cli;
 
 import java.util.HashMap;
-import Controllers.*;
-import Exceptions.*;
-import Handlers.*;
-import Interfaces.*;
+
 import Commands.*;
+import Interfaces.cli.io.Inputer;
+import Interfaces.cli.io.Outputer;
+import Interfaces.cli.io.Parser;
+import Interfaces.cli.Exceptions.WrongInput;
 
 public class StandardCommandBuilder implements CommandBuilder {
     private Inputer inputer;
     private Parser parser;
     private Outputer outputer;
-    private HashMap<String, Command> commandObjects = new HashMap<>();
+    private final HashMap<String, Command> commandObjects = new HashMap<>();
 
-    {
-        commandObjects.put("help", new Help());
+    public StandardCommandBuilder(Outputer outputer, Inputer inputer, Parser parser) {
+        commandObjects.put("help", new Help(outputer, commandObjects));
         commandObjects.put("exit", new Exit());
-        commandObjects.put("getInfo", new GetInfo());
+        commandObjects.put("getInfo", new GetInfo(outputer, commandObjects));
+
+        this.inputer = inputer;
+        this.parser = parser;
+        this.outputer = outputer;
     }
 
     public Command build(String commandName, HashMap<String, String> commandArgs) {
         Command command = getCommandObject(commandName);
-
-        command.setInputer(this.inputer);
-        command.setParser(this.parser);
-        command.setOutputer(this.outputer);
-
-        command.getData(commandArgs);
+        command.setData(commandArgs);
         while (!command.checkCompleteness()) {
 
-            outputer.outputLine("Некоторые обязательные поля остались незаполненными:"
+            outputer.outputLine("Некоторые обязательные поля остались незаполненными: "
                     + String.join(" ", command.getEmptyFields()));
             String newDataLine = this.inputer.getLine();
             HashMap<String, String> parsedData = this.parser.parseLine(newDataLine);
-            command.getData(parsedData);
+            command.setData(parsedData);
         }
         return command;
     }

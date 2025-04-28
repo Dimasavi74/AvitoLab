@@ -1,4 +1,4 @@
-package Exceptions;
+package Interfaces.cli.Exceptions;
 
 public class DefaultException extends RuntimeException {
     public DefaultException(String message) {

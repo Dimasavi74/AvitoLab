@@ -1,13 +1,8 @@
-package Handlers;
+package Interfaces.cli.io;
 
-import java.util.Arrays;
 import java.util.Scanner;
-import Controllers.*;
-import Handlers.*;
-import Interfaces.*;
-import Commands.*;
 
-public class StandardConsoleInputer implements Inputer {
+public class ConsoleInputer implements Inputer {
     private String endSymbol = ";";
 
     public String getLine() {

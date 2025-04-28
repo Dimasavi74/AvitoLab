@@ -1,30 +1,26 @@
 package Commands;
 
-import Interfaces.MainCycleController;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Exit implements Command {
-
+public class Search implements Command{
     public void execute() {
-        MainCycleController.stop();
+
     }
 
     public void setData(HashMap<String, String> data) {
-        return;
+
     }
 
     public boolean checkCompleteness() {
-        return true;
+        return false;
     }
 
     public ArrayList<String> getEmptyFields() {
-        return new ArrayList<String>();
+        return null;
     }
 
     public String getInfo() {
-        return "Завершает работу программы" + "\n" + "Вид: /exit;";
+        return "";
     }
-
 }
